@@ -1,0 +1,85 @@
+code under test: /home/claude/r6orig
+
+F1 mirror-image self-interference
+[link] link up [r6.0.1-mesh]: my_addr=1  peer_addr=2  frag=256B  ack_timeout=0.50s retries=5  ARQ=selective-repeat window 32 per peer
+[link] commands:
+[link]   <text>              send a text message to the peer
+[link]   /sendfile <path>    segment and send a file
+[link]   /stats              print link counters
+[link]   /ping               send a one-word probe
+[link]   /secure             encryption status, key fingerprints
+[link]   /help               this list
+[link] static: channel 0
+[link] security: OFF - frames are sent in the clear
+  [FAIL] F1a the node block's channel plan puts no channel on another channel's IQ image - offsets [-900, -300, 300, 900] kHz, image hits [(0, 3), (1, 2), (2, 1), (3, 0)]
+  [FAIL] F1b two nodes on channels 0 and 3 (mirror channels in r6.0.1) secure the link and exchange messages - session None s, messages waiting/waiting, SINR A->B -20.1 B->A -20.1 dB
+
+F2 own transmitter overloads own receiver
+  [FAIL] F2 own transmitter at full scale: gain control clears the ADC and both directions reach 15 dB - A clipped 0.7, SINR A->B -15.9 B->A -36.8 dB, messages queued/queued, A RX gain 30.0 TX atten 50.0
+
+F3 receiver freeze on a corrupted header
+  [FAIL] F3 a header announcing 12301 bytes costs only its own frame - ModuleNotFoundError: No module named 'bpsk_phy'
+
+F4 overflows: channels consumed in lockstep
+[link] link up [r6.0.1-mesh]: my_addr=1  peer_addr=2  frag=256B  ack_timeout=0.50s retries=5  ARQ=selective-repeat window 32 per peer
+[link] commands:
+[link]   <text>              send a text message to the peer
+[link]   /sendfile <path>    segment and send a file
+[link]   /stats              print link counters
+[link]   /ping               send a one-word probe
+[link]   /secure             encryption status, key fingerprints
+[link]   /help               this list
+[link] static: channel 0
+[link] security: OFF - frames are sent in the clear
+  [FAIL] F4a the node block has no stream inputs (r6.0.1 read four independently clocked symbol streams + the ADC in one block) - in_sig [<class 'numpy.complex64'>, <class 'numpy.complex64'>, <class 'numpy.complex64'>, <class 'numpy.complex64'>, <class 'numpy.complex64'>]
+  [FAIL] F4b no block in the flowgraph takes stream inputs from two receive channels (each symbol clock follows its own crystal) - [('link_layer', ['_ch0', '_ch1', '_ch2', '_ch3'])]
+
+F5 lag, slow host, persistent one-way link
+[link] link up [r6.0.1-mesh]: my_addr=1  peer_addr=2  frag=256B  ack_timeout=0.50s retries=5  ARQ=selective-repeat window 32 per peer
+[link] commands:
+[link]   <text>              send a text message to the peer
+[link]   /sendfile <path>    segment and send a file
+[link]   /stats              print link counters
+[link]   /ping               send a one-word probe
+[link]   /secure             encryption status, key fingerprints
+[link]   /help               this list
+[link] static: channel 0
+[link] security: OFF - frames are sent in the clear
+  [FAIL] F5a an idle node transmits at most a few frames a second (r6.0.1: an IDLE frame back to back, ~200/s, each decoded in Python by every receiver) - 195.0 frames/s
+  [FAIL] F5b a slow host (2.5 s receive latency, node B: echo 4.6 s) still secures every link and delivers both ways - session 3.7, failed/delivered; session None, queued/failed; session 0.0, failed/failed
+  [FAIL] F5c a node nobody can hear reports a link fault and stays on its channel (r6.0.1 treated it as a collision and hopped) - 2 channel moves in 110 s, fault reported False, peer states []
+  [FAIL] F5d crossed handshakes on a slow link (1.7 s each way) converge on one session: traffic flows after the old sessions expire - frames opened in the last 30 s: A 0, B 0; unknown-session drops 164
+  [FAIL] F5e two nodes that claimed one channel separate on a slow host (2.5 s transmit pipeline; r6.0.1 kept them together) - both on channel 1 at start: True; settled after 90 s: False
+  [FAIL] F5f on a slow host the links stay "ok" through the channel checks - AttributeError: 'ChatApp' object has no attribute 'link_state'
+  [FAIL] F5g two nodes that start on one channel at the same instant, with identical random choices, part within 40 s (r6.1 before the fix: both reported a link fault and stayed) - apart at start, parted after 9 s; shared, NOT parted after 40 s; apart at start, NOT parted after 40 s
+  [FAIL] F5h the only two nodes, on one channel and unable to decode each other, part within 40 s (r6.1 before the fix and r6.0.1: stayed together) - shared, NOT parted after 40 s; shared, NOT parted after 40 s; shared, NOT parted after 40 s
+
+F6 CPU
+  [FAIL] F6 the flowgraph has no FLL band-edge blocks (0.54 core) and its Qt sinks see decimated data (0.1-0.15 core each in r6.0.1) - 4 FLLs, undecimated Qt sinks ['qtgui_const_sink_ch0', 'qtgui_const_sink_ch1', 'qtgui_const_sink_ch2', 'qtgui_const_sink_ch3', 'qtgui_freq_sink_x_0', 'qtgui_time_sink_tx'], Python blocks ['link_layer']
+
+F7 transmit queue in front of the modulator
+  [FAIL] F7 a transmitter 15 % slower than its airtime model keeps a bounded queue (r6.0.1: the PDU queue grew past 100 frames - "pdu_to_tagged_stream ... Message discarded") - longest real queue 6.75 s, file delivered
+
+W wire format
+  [FAIL] W1 the wire revision moved on (r6.1) - r6.0.1-mesh
+  [FAIL] W2 beacons carry the r6.1 link report as an extension - pack_beacon has no ext
+
+T telemetry
+  [FAIL] T per-second telemetry CSV - TypeError: ChatApp.__init__() got an unexpected keyword argument 'telemetry_dir'
+
+R embedded-block rules
+[link] link up [r6.0.1-mesh]: my_addr=42  peers: discovered  frag=256B  ack_timeout=0.50s retries=5  ARQ=selective-repeat window 32 per peer
+[link] commands:
+[link]   <text>              send a text message to the peer
+[link]   /sendfile <path>    segment and send a file
+[link]   /stats              print link counters
+[link]   /ping               send a one-word probe
+[link]   /secure             encryption status, key fingerprints
+[link]   /help               this list
+[link] mesh: address 42 (derived from node_id.json), 4 channels at 600 kHz spacing, channel automatic
+[link] security: ERROR - no node key in /tmp/bpsk_r61_s_suv0f0/r_nokeys/keys - run: python3 bpsk_keys.py init
+[link] nothing will be transmitted until this is fixed (or set security=False)
+  [PASS] R1 GRC can instantiate the block: no thread, no socket, no key created in __init__ - threads 1->1, port free True, key created False
+  [PASS] R2 every message handler is a named method (the stub refuses lambdas and partials, as GNU Radio's gateway does)
+
+FAILED: F1a the node block's channel plan puts no channel on another channel's IQ image, F1b two nodes on channels 0 and 3 (mirror channels in r6.0.1) secure the link and exchange messages, F2 own transmitter at full scale: gain control clears the ADC and both directions reach 15 dB, F3 a header announcing 12301 bytes costs only its own frame, F4a the node block has no stream inputs (r6.0.1 read four independently clocked symbol streams + the ADC in one block), F4b no block in the flowgraph takes stream inputs from two receive channels (each symbol clock follows its own crystal), F5a an idle node transmits at most a few frames a second (r6.0.1: an IDLE frame back to back, ~200/s, each decoded in Python by every receiver), F5b a slow host (2.5 s receive latency, node B: echo 4.6 s) still secures every link and delivers both ways, F5c a node nobody can hear reports a link fault and stays on its channel (r6.0.1 treated it as a collision and hopped), F5d crossed handshakes on a slow link (1.7 s each way) converge on one session: traffic flows after the old sessions expire, F5e two nodes that claimed one channel separate on a slow host (2.5 s transmit pipeline; r6.0.1 kept them together), F5f on a slow host the links stay "ok" through the channel checks, F5g two nodes that start on one channel at the same instant, with identical random choices, part within 40 s (r6.1 before the fix: both reported a link fault and stayed), F5h the only two nodes, on one channel and unable to decode each other, part within 40 s (r6.1 before the fix and r6.0.1: stayed together), F6 the flowgraph has no FLL band-edge blocks (0.54 core) and its Qt sinks see decimated data (0.1-0.15 core each in r6.0.1), F7 a transmitter 15 % slower than its airtime model keeps a bounded queue (r6.0.1: the PDU queue grew past 100 frames - "pdu_to_tagged_stream ... Message discarded"), W1 the wire revision moved on (r6.1), W2 beacons carry the r6.1 link report as an extension, T per-second telemetry CSV

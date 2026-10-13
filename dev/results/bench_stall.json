@@ -1,0 +1,112 @@
+{
+ "nodes": [
+  "Ann",
+  "Ben"
+ ],
+ "scale": 8.0,
+ "seconds": 200.0,
+ "Ann": {
+  "rows": 200,
+  "overflows_after_warmup": 0,
+  "underflows_after_warmup": 0,
+  "channel": "3",
+  "rx_gain": "24",
+  "tx_atten": "64",
+  "adc_peak_dbfs": "-18.9",
+  "adc_clip": "0.0",
+  "cpu_cores": "0.67",
+  "cpu_top": "symbol_sync_cc:0.09 keep_m_in_n:0.07 BPSK Chat Node:0.06 freq_xlating_f:0.06 rotator_cc:0.05 costas_loop_cc:0.04 multiply_const:0.04 interp_fir_filt:0.03",
+  "echo_ms": "786.5",
+  "live_fault": "",
+  "rx_valid": "868",
+  "rx_bad": "0",
+  "adc_peak_max_after_warmup": -13.8,
+  "channel_changes_after_warmup": 0,
+  "cpu_mean": 0.68,
+  "headers_rejected": 0,
+  "faults": [],
+  "rss_mb": {
+   "first": 157.3,
+   "last": 158.4,
+   "max": 158.4,
+   "growth_mb_per_h": 22.49
+  },
+  "tx_dropped": 0,
+  "links": {
+   "Ben": {
+    "snr_in_median": 21.3,
+    "snr_out_median": 22.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 2.0,
+    "reason": ""
+   }
+  },
+  "group_sent": 9,
+  "group_delivered_all": 9,
+  "group_states": [
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered"
+  ]
+ },
+ "Ben": {
+  "rows": 200,
+  "overflows_after_warmup": 0,
+  "underflows_after_warmup": 0,
+  "channel": "1",
+  "rx_gain": "24",
+  "tx_atten": "65",
+  "adc_peak_dbfs": "-19.9",
+  "adc_clip": "0.0",
+  "cpu_cores": "1.01",
+  "cpu_top": "fault_model:0.22 symbol_sync_cc:0.09 keep_m_in_n:0.07 BPSK Chat Node:0.07 freq_xlating_f:0.07 costas_loop_cc:0.05 rotator_cc:0.04 constellation_:0.04",
+  "echo_ms": "730.9",
+  "live_fault": "",
+  "rx_valid": "834",
+  "rx_bad": "0",
+  "adc_peak_max_after_warmup": -12.1,
+  "channel_changes_after_warmup": 0,
+  "cpu_mean": 0.95,
+  "headers_rejected": 0,
+  "faults": [
+   "receiver stalled: no samples from the radio for more than 3 s - check the E200 link (USB/Ethernet) and the console"
+  ],
+  "rss_mb": {
+   "first": 156.0,
+   "last": 157.8,
+   "max": 157.8,
+   "growth_mb_per_h": 36.64
+  },
+  "tx_dropped": 0,
+  "links": {
+   "Ann": {
+    "snr_in_median": 22.4,
+    "snr_out_median": 21.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 1.0,
+    "reason": ""
+   }
+  },
+  "group_sent": 8,
+  "group_delivered_all": 7,
+  "group_states": [
+   "delivered",
+   "delivered",
+   "delivered",
+   "failed",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered"
+  ]
+ },
+ "messages_sent": 17
+}

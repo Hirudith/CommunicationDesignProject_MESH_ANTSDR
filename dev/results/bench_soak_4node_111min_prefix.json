@@ -1,0 +1,250 @@
+{
+ "nodes": [
+  "Ann",
+  "Ben",
+  "Cat",
+  "Dan"
+ ],
+ "scale": 32.0,
+ "seconds": 7200,
+ "Ann": {
+  "rows": 6662,
+  "overflows_after_warmup": 0,
+  "underflows_after_warmup": 0,
+  "channel": "2",
+  "rx_gain": "15",
+  "tx_atten": "46",
+  "adc_peak_dbfs": "-10.0",
+  "adc_clip": "0.0",
+  "cpu_cores": "0.3",
+  "cpu_top": "BPSK Chat Node:0.08 symbol_sync_cc:0.03 multiply_const:0.02 freq_xlating_f:0.01 python3.:0.01 costas_loop_cc:0.01 interp_fir_filt:0.01 fft_filter_ccc:0.01",
+  "echo_ms": "2459.4",
+  "live_fault": "",
+  "rx_valid": "62405",
+  "rx_bad": "372",
+  "adc_peak_max_after_warmup": -7.8,
+  "channel_changes_after_warmup": 0,
+  "cpu_mean": 0.28,
+  "headers_rejected": 167,
+  "faults": [],
+  "rss_mb": {
+   "first": 156.5,
+   "last": 159.6,
+   "max": 159.8,
+   "growth_mb_per_h": 1.69
+  },
+  "tx_dropped": 570,
+  "links": {
+   "Cat": {
+    "snr_in_median": 24.3,
+    "snr_out_median": 28.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 20.0,
+    "reason": ""
+   },
+   "Ben": {
+    "snr_in_median": 26.2,
+    "snr_out_median": 30.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 40.0,
+    "reason": ""
+   },
+   "Dan": {
+    "snr_in_median": 26.3,
+    "snr_out_median": 26.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 20.0,
+    "reason": ""
+   }
+  },
+  "group_sent": 0,
+  "group_delivered_all": 0,
+  "group_states": []
+ },
+ "Ben": {
+  "rows": 6662,
+  "overflows_after_warmup": 0,
+  "underflows_after_warmup": 0,
+  "channel": "1",
+  "rx_gain": "19",
+  "tx_atten": "50",
+  "adc_peak_dbfs": "-9.6",
+  "adc_clip": "0.0",
+  "cpu_cores": "0.32",
+  "cpu_top": "BPSK Chat Node:0.07 costas_loop_cc:0.03 rotator_cc:0.02 keep_m_in_n:0.02 symbol_sync_cc:0.02 freq_xlating_f:0.02 add_cc:0.01 agc3_cc:0.01",
+  "echo_ms": "2724.6",
+  "live_fault": "",
+  "rx_valid": "62724",
+  "rx_bad": "252",
+  "adc_peak_max_after_warmup": -7.4,
+  "channel_changes_after_warmup": 0,
+  "cpu_mean": 0.28,
+  "headers_rejected": 50,
+  "faults": [],
+  "rss_mb": {
+   "first": 156.6,
+   "last": 160.2,
+   "max": 160.2,
+   "growth_mb_per_h": 1.96
+  },
+  "tx_dropped": 527,
+  "links": {
+   "Dan": {
+    "snr_in_median": 30.2,
+    "snr_out_median": 27.0,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 53.0,
+    "reason": ""
+   },
+   "Ann": {
+    "snr_in_median": 30.5,
+    "snr_out_median": 26.0,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 23.0,
+    "reason": ""
+   },
+   "Cat": {
+    "snr_in_median": 25.8,
+    "snr_out_median": 27.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 5.0,
+    "reason": ""
+   }
+  },
+  "group_sent": 0,
+  "group_delivered_all": 0,
+  "group_states": []
+ },
+ "Cat": {
+  "rows": 6662,
+  "overflows_after_warmup": 0,
+  "underflows_after_warmup": 0,
+  "channel": "3",
+  "rx_gain": "17",
+  "tx_atten": "48",
+  "adc_peak_dbfs": "-10.3",
+  "adc_clip": "0.0",
+  "cpu_cores": "0.34",
+  "cpu_top": "BPSK Chat Node:0.09 keep_m_in_n:0.03 symbol_sync_cc:0.03 multiply_const:0.02 freq_xlating_f:0.02 costas_loop_cc:0.02 rotator_cc:0.01 agc3_cc:0.01",
+  "echo_ms": "3050.2",
+  "live_fault": "",
+  "rx_valid": "63111",
+  "rx_bad": "26",
+  "adc_peak_max_after_warmup": -7.0,
+  "channel_changes_after_warmup": 2,
+  "cpu_mean": 0.28,
+  "headers_rejected": 2,
+  "faults": [],
+  "rss_mb": {
+   "first": 156.1,
+   "last": 159.9,
+   "max": 160.0,
+   "growth_mb_per_h": 2.1
+  },
+  "tx_dropped": 604,
+  "links": {
+   "Ann": {
+    "snr_in_median": 28.5,
+    "snr_out_median": 25.0,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 22.0,
+    "reason": ""
+   },
+   "Ben": {
+    "snr_in_median": 27.5,
+    "snr_out_median": 25.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 595.0,
+    "reason": ""
+   },
+   "Dan": {
+    "snr_in_median": 28.6,
+    "snr_out_median": 23.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 40.0,
+    "reason": ""
+   }
+  },
+  "group_sent": 0,
+  "group_delivered_all": 0,
+  "group_states": []
+ },
+ "Dan": {
+  "rows": 6662,
+  "overflows_after_warmup": 0,
+  "underflows_after_warmup": 0,
+  "channel": "0",
+  "rx_gain": "15",
+  "tx_atten": "46",
+  "adc_peak_dbfs": "-10.0",
+  "adc_clip": "0.0",
+  "cpu_cores": "0.3",
+  "cpu_top": "BPSK Chat Node:0.08 symbol_sync_cc:0.02 multiply_const:0.02 freq_xlating_f:0.02 python3.:0.01 costas_loop_cc:0.01 ZMQbg/IO/:0.01 add_cc:0.01",
+  "echo_ms": "3379.1",
+  "live_fault": "",
+  "rx_valid": "63011",
+  "rx_bad": "29",
+  "adc_peak_max_after_warmup": -7.7,
+  "channel_changes_after_warmup": 0,
+  "cpu_mean": 0.28,
+  "headers_rejected": 4,
+  "faults": [],
+  "rss_mb": {
+   "first": 156.1,
+   "last": 159.2,
+   "max": 159.3,
+   "growth_mb_per_h": 1.71
+  },
+  "tx_dropped": 570,
+  "links": {
+   "Ben": {
+    "snr_in_median": 26.4,
+    "snr_out_median": 30.0,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 16.0,
+    "reason": ""
+   },
+   "Ann": {
+    "snr_in_median": 26.5,
+    "snr_out_median": 26.0,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 588.0,
+    "reason": ""
+   },
+   "Cat": {
+    "snr_in_median": 23.6,
+    "snr_out_median": 28.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 26.0,
+    "reason": ""
+   }
+  },
+  "group_sent": 0,
+  "group_delivered_all": 0,
+  "group_states": []
+ },
+ "messages_sent": 0,
+ "note": "2-h soak started 22:17:50 with --seconds 7200 --warmup 120 --drain 90 --ppm 25,-25,20,-20 on the r6.1 code BEFORE the LOW_HOLD (bpsk_gain) and silence_max (bpsk_mac) fixes. The workspace was restarted at uptime 6661 s (111 min), killing every process at once; no summary or final /api/state was written. This summary was rebuilt from the per-second telemetry CSVs with bpsk_zmq_bench.summarise(); group delivery counts are therefore unavailable (ARQ give-ups: telemetry column \"dropped\").",
+ "ended_uptime_s": 6661,
+ "arq_dropped_total": {
+  "Ann": 1,
+  "Ben": 1,
+  "Cat": 3,
+  "Dan": 0
+ },
+ "channel_moves": {
+  "Cat": "0 -> 3 at 586 s (startup collision with Dan on ch0, fixed later by silence_max)"
+ }
+}

@@ -1,0 +1,113 @@
+{
+ "nodes": [
+  "Ann",
+  "Ben"
+ ],
+ "scale": 8.0,
+ "seconds": 300.0,
+ "Ann": {
+  "rows": 301,
+  "overflows_after_warmup": 0,
+  "underflows_after_warmup": 0,
+  "channel": "1",
+  "rx_gain": "24",
+  "tx_atten": "65",
+  "adc_peak_dbfs": "-19.9",
+  "adc_clip": "0.0",
+  "cpu_cores": "0.77",
+  "cpu_top": "symbol_sync_cc:0.10 BPSK Chat Node:0.09 keep_m_in_n:0.06 freq_xlating_f:0.05 costas_loop_cc:0.05 multiply_const:0.04 interp_fir_filt:0.04 add_cc:0.04",
+  "echo_ms": "761.2",
+  "live_fault": "",
+  "rx_valid": "1380",
+  "rx_bad": "0",
+  "adc_peak_max_after_warmup": -15.0,
+  "channel_changes_after_warmup": 0,
+  "cpu_mean": 0.72,
+  "headers_rejected": 1,
+  "faults": [],
+  "rss_mb": {
+   "first": 157.9,
+   "last": 159.3,
+   "max": 159.4,
+   "growth_mb_per_h": 18.11
+  },
+  "tx_dropped": 0,
+  "links": {
+   "Ben": {
+    "snr_in_median": 22.4,
+    "snr_out_median": 21.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 4.0,
+    "reason": ""
+   }
+  },
+  "group_sent": 17,
+  "group_delivered_all": 17,
+  "group_states": [
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered"
+  ]
+ },
+ "Ben": {
+  "rows": 301,
+  "overflows_after_warmup": 0,
+  "underflows_after_warmup": 0,
+  "channel": "0",
+  "rx_gain": "24",
+  "tx_atten": "64",
+  "adc_peak_dbfs": "-18.9",
+  "adc_clip": "0.0",
+  "cpu_cores": "0.74",
+  "cpu_top": "symbol_sync_cc:0.10 BPSK Chat Node:0.08 freq_xlating_f:0.06 keep_m_in_n:0.06 multiply_const:0.04 costas_loop_cc:0.04 interp_fir_filt:0.04 rotator_cc:0.04",
+  "echo_ms": "672.3",
+  "live_fault": "",
+  "rx_valid": "1381",
+  "rx_bad": "0",
+  "adc_peak_max_after_warmup": -10.7,
+  "channel_changes_after_warmup": 0,
+  "cpu_mean": 0.72,
+  "headers_rejected": 0,
+  "faults": [],
+  "rss_mb": {
+   "first": 157.4,
+   "last": 158.8,
+   "max": 158.8,
+   "growth_mb_per_h": 17.51
+  },
+  "tx_dropped": 0,
+  "links": {
+   "Ann": {
+    "snr_in_median": 21.5,
+    "snr_out_median": 22.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 1.0,
+    "reason": ""
+   }
+  },
+  "group_sent": 17,
+  "group_delivered_all": 17,
+  "group_states": [
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered"
+  ]
+ },
+ "messages_sent": 34
+}

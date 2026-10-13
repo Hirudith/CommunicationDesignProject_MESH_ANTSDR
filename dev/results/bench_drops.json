@@ -1,0 +1,107 @@
+{
+ "nodes": [
+  "Ann",
+  "Ben"
+ ],
+ "scale": 8.0,
+ "seconds": 180.0,
+ "Ann": {
+  "rows": 181,
+  "overflows_after_warmup": 0,
+  "underflows_after_warmup": 0,
+  "channel": "3",
+  "rx_gain": "23",
+  "tx_atten": "64",
+  "adc_peak_dbfs": "-19.8",
+  "adc_clip": "0.0",
+  "cpu_cores": "0.74",
+  "cpu_top": "symbol_sync_cc:0.09 BPSK Chat Node:0.07 keep_m_in_n:0.06 multiply_const:0.05 freq_xlating_f:0.04 rotator_cc:0.04 costas_loop_cc:0.04 add_cc:0.04",
+  "echo_ms": "812.9",
+  "live_fault": "",
+  "rx_valid": "820",
+  "rx_bad": "0",
+  "adc_peak_max_after_warmup": -15.8,
+  "channel_changes_after_warmup": 0,
+  "cpu_mean": 0.7,
+  "headers_rejected": 0,
+  "faults": [],
+  "rss_mb": {
+   "first": 155.5,
+   "last": 156.6,
+   "max": 156.7,
+   "growth_mb_per_h": 25.9
+  },
+  "tx_dropped": 0,
+  "links": {
+   "Ben": {
+    "snr_in_median": 22.1,
+    "snr_out_median": 22.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 2.0,
+    "reason": ""
+   }
+  },
+  "group_sent": 7,
+  "group_delivered_all": 7,
+  "group_states": [
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered"
+  ]
+ },
+ "Ben": {
+  "rows": 181,
+  "overflows_after_warmup": 105,
+  "underflows_after_warmup": 0,
+  "channel": "2",
+  "rx_gain": "24",
+  "tx_atten": "64",
+  "adc_peak_dbfs": "-18.8",
+  "adc_clip": "0.0",
+  "cpu_cores": "0.96",
+  "cpu_top": "fault_model:0.19 BPSK Chat Node:0.08 symbol_sync_cc:0.08 keep_m_in_n:0.07 freq_xlating_f:0.07 costas_loop_cc:0.05 rotator_cc:0.04 interp_fir_filt:0.04",
+  "echo_ms": "733.0",
+  "live_fault": "",
+  "rx_valid": "787",
+  "rx_bad": "12",
+  "adc_peak_max_after_warmup": -14.9,
+  "channel_changes_after_warmup": 0,
+  "cpu_mean": 0.96,
+  "headers_rejected": 3,
+  "faults": [],
+  "rss_mb": {
+   "first": 155.8,
+   "last": 157.4,
+   "max": 157.5,
+   "growth_mb_per_h": 35.94
+  },
+  "tx_dropped": 0,
+  "links": {
+   "Ann": {
+    "snr_in_median": 22.4,
+    "snr_out_median": 22.0,
+    "fer": 0.0074,
+    "state": "ok",
+    "session_s": 1.0,
+    "reason": ""
+   }
+  },
+  "group_sent": 7,
+  "group_delivered_all": 7,
+  "group_states": [
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered"
+  ]
+ },
+ "messages_sent": 14
+}

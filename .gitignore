@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+chat_files/
+telemetry/
+keys/
+*.key
+trusted.json
+bench_run/

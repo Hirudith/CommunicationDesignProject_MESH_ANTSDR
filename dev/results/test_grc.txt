@@ -1,0 +1,43 @@
+correlate_access_code_bb_ts :info: set_min_output_buffer on block 2 to 1048576
+repack_bits_bb :info: set_min_output_buffer on block 3 to 131072
+GNU Radio 3.10.9.2
+
+G1 embedded sources
+  [PASS] bpsk_duplex_pluto_deframer_ch0.py == the source embedded as deframer_ch0
+  [PASS] bpsk_duplex_pluto_deframer_ch1.py == the source embedded as deframer_ch1
+  [PASS] bpsk_duplex_pluto_deframer_ch2.py == the source embedded as deframer_ch2
+  [PASS] bpsk_duplex_pluto_deframer_ch3.py == the source embedded as deframer_ch3
+  [PASS] bpsk_duplex_pluto_link_layer.py == the source embedded as link_layer
+  [PASS] bpsk_duplex_pluto_tx_framer.py == the source embedded as tx_framer
+  [PASS] all six embedded blocks present - []
+  [PASS] the deframer blocks are dev/epy_deframer.py
+
+G2 the shipped .py is the compiled .grc
+  [PASS] grcc compiles the .grc without errors
+  [PASS] bpsk_duplex_pluto.py is exactly that output (in the 3.10.12 layout; connection order aside)
+  [PASS] 3.10.12 layout: version banner, flowgraph_started event, QSettings key
+
+G3 filters
+  [PASS] bpsk_phy.rrc_taps is firdes.root_raised_cosine
+
+G4 F3 at block level: corrupted header
+  [PASS] r6.0.1 blocks: the frames after a corrupted length (3085 bytes; 12301 on 3.10.12) are swallowed (reproduces F3) - 15 of 30 frames
+  [PASS] r6.1 deframer block: only the corrupted frame is lost - 30 of 30 frames
+
+G5 AGC and symbol sync (parameters from the .grc)
+  [PASS] the flowgraph's AGC + symbol sync: silence, then a transmitter at -1 dBFS switching on: not wedged, its frames decode - wedged False, 47/47
+  [PASS] ... and a node at -55 dBFS right after it decodes - 47/47
+  [PASS] (why not agc2: with it the same input wedges the symbol sync - the output spikes to gain x input before the loop reacts) - wedged True, 0/47, 0/47
+
+G7 weak neighbours and carrier offset: the r6.0.1 chain (FLL, no AGC) against the r6.1 chain (AFC, AGC), parameters as generated
+  [PASS] r6.0.1 chain: a neighbour 30 dB or more below full scale (+18 kHz) is not decoded at all - its loops scale with the signal amplitude and there is no AGC - -10 dBFS: old 78/79 new 78/79, -40 dBFS: old 0/79 new 78/79, -55 dBFS: old 0/79 new 78/79
+  [PASS] r6.1 chain: the same three signals decode - -10 dBFS: old 78/79 new 78/79, -40 dBFS: old 0/79 new 78/79, -55 dBFS: old 0/79 new 78/79
+
+G6 the generated flowgraph end to end (radio replaced by a file)
+  [PASS] the flowgraph runs on 3.6 s of recorded samples without a stall or a fault - ran in 4.6 s
+  [PASS] channel 1 (+18 kHz offset, -38 dBFS, own TX 35+ dB above on channel 0): >= 95 % of frames after the AFC settles - 302 of 307, AFC estimate +18000 Hz
+  [PASS] channel 2 (-21 kHz offset, -53 dBFS, own TX 35+ dB above on channel 0): >= 95 % of frames after the AFC settles - 303 of 308, AFC estimate -21000 Hz
+  [PASS] channel 3 (empty; the own TX image lands at -450 kHz, outside every channel): no frames - 0
+  [PASS] the corrupted header and the 40 ms gap cost at most the frames they hit - 0 frames lost around them
+
+all GNU Radio checks passed

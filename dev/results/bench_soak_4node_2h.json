@@ -1,0 +1,283 @@
+{
+ "nodes": [
+  "Ann",
+  "Ben",
+  "Cat",
+  "Dan"
+ ],
+ "scale": 32.0,
+ "seconds": 7200.0,
+ "Ann": {
+  "rows": 7200,
+  "overflows_after_warmup": 0,
+  "underflows_after_warmup": 0,
+  "channel": "3",
+  "rx_gain": "10",
+  "tx_atten": "50",
+  "adc_peak_dbfs": "-20.2",
+  "adc_clip": "0.0",
+  "cpu_cores": "0.26",
+  "cpu_top": "BPSK Chat Node:0.06 rotator_cc:0.02 symbol_sync_cc:0.02 ZMQbg/IO/:0.01 multiply_const:0.01 interp_fir_filt:0.01 float_to_short:0.01 conjugate_cc:0.01",
+  "echo_ms": "3068.1",
+  "live_fault": "",
+  "rx_valid": "68037",
+  "rx_bad": "27",
+  "adc_peak_max_after_warmup": -18.9,
+  "channel_changes_after_warmup": 0,
+  "cpu_mean": 0.27,
+  "headers_rejected": 1,
+  "faults": [],
+  "rss_mb": {
+   "first": 157.5,
+   "last": 161.4,
+   "max": 161.5,
+   "growth_mb_per_h": 2.01
+  },
+  "tx_dropped": 0,
+  "links": {
+   "Cat": {
+    "snr_in_median": 24.7,
+    "snr_out_median": 23.0,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 24.0,
+    "reason": ""
+   },
+   "Ben": {
+    "snr_in_median": 26.6,
+    "snr_out_median": 24.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 58.0,
+    "reason": ""
+   },
+   "Dan": {
+    "snr_in_median": 24.8,
+    "snr_out_median": 20.0,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 51.0,
+    "reason": ""
+   }
+  },
+  "group_sent": 291,
+  "group_delivered_all": 291,
+  "group_states": [
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered"
+  ]
+ },
+ "Ben": {
+  "rows": 7200,
+  "overflows_after_warmup": 0,
+  "underflows_after_warmup": 0,
+  "channel": "2",
+  "rx_gain": "17",
+  "tx_atten": "48",
+  "adc_peak_dbfs": "-10.1",
+  "adc_clip": "0.0",
+  "cpu_cores": "0.26",
+  "cpu_top": "BPSK Chat Node:0.07 costas_loop_cc:0.02 symbol_sync_cc:0.02 keep_m_in_n:0.01 constellation_:0.01 python3.:0.01 delay:0.01 multiply_const:0.01",
+  "echo_ms": "2389.5",
+  "live_fault": "",
+  "rx_valid": "67971",
+  "rx_bad": "26",
+  "adc_peak_max_after_warmup": -9.5,
+  "channel_changes_after_warmup": 0,
+  "cpu_mean": 0.27,
+  "headers_rejected": 2,
+  "faults": [],
+  "rss_mb": {
+   "first": 157.3,
+   "last": 160.2,
+   "max": 160.2,
+   "growth_mb_per_h": 1.45
+  },
+  "tx_dropped": 0,
+  "links": {
+   "Dan": {
+    "snr_in_median": 28.9,
+    "snr_out_median": 27.0,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 66.0,
+    "reason": ""
+   },
+   "Cat": {
+    "snr_in_median": 25.6,
+    "snr_out_median": 25.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 30.0,
+    "reason": ""
+   },
+   "Ann": {
+    "snr_in_median": 24.7,
+    "snr_out_median": 26.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 4.0,
+    "reason": ""
+   }
+  },
+  "group_sent": 291,
+  "group_delivered_all": 291,
+  "group_states": [
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered"
+  ]
+ },
+ "Cat": {
+  "rows": 7200,
+  "overflows_after_warmup": 0,
+  "underflows_after_warmup": 0,
+  "channel": "1",
+  "rx_gain": "10",
+  "tx_atten": "50",
+  "adc_peak_dbfs": "-18.7",
+  "adc_clip": "0.0",
+  "cpu_cores": "0.27",
+  "cpu_top": "BPSK Chat Node:0.07 symbol_sync_cc:0.03 rotator_cc:0.02 costas_loop_cc:0.01 multiply_const:0.01 keep_m_in_n:0.01 add_cc:0.01 python3.:0.01",
+  "echo_ms": "2742.0",
+  "live_fault": "",
+  "rx_valid": "67988",
+  "rx_bad": "30",
+  "adc_peak_max_after_warmup": -18.4,
+  "channel_changes_after_warmup": 0,
+  "cpu_mean": 0.27,
+  "headers_rejected": 9,
+  "faults": [],
+  "rss_mb": {
+   "first": 157.3,
+   "last": 160.5,
+   "max": 160.6,
+   "growth_mb_per_h": 1.64
+  },
+  "tx_dropped": 0,
+  "links": {
+   "Ann": {
+    "snr_in_median": 22.9,
+    "snr_out_median": 24.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 55.0,
+    "reason": ""
+   },
+   "Ben": {
+    "snr_in_median": 25.4,
+    "snr_out_median": 25.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 18.0,
+    "reason": ""
+   },
+   "Dan": {
+    "snr_in_median": 25.7,
+    "snr_out_median": 23.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 5.0,
+    "reason": ""
+   }
+  },
+  "group_sent": 291,
+  "group_delivered_all": 291,
+  "group_states": [
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered"
+  ]
+ },
+ "Dan": {
+  "rows": 7200,
+  "overflows_after_warmup": 0,
+  "underflows_after_warmup": 0,
+  "channel": "0",
+  "rx_gain": "14",
+  "tx_atten": "46",
+  "adc_peak_dbfs": "-42.1",
+  "adc_clip": "0.0",
+  "cpu_cores": "0.26",
+  "cpu_top": "BPSK Chat Node:0.06 symbol_sync_cc:0.02 python3.:0.01 costas_loop_cc:0.01 keep_m_in_n:0.01 freq_xlating_f:0.01 interp_fir_filt:0.01 fft_filter_ccc:0.01",
+  "echo_ms": "3122.3",
+  "live_fault": "",
+  "rx_valid": "67956",
+  "rx_bad": "26",
+  "adc_peak_max_after_warmup": -10.5,
+  "channel_changes_after_warmup": 0,
+  "cpu_mean": 0.27,
+  "headers_rejected": 2,
+  "faults": [],
+  "rss_mb": {
+   "first": 157.0,
+   "last": 160.3,
+   "max": 160.4,
+   "growth_mb_per_h": 1.66
+  },
+  "tx_dropped": 0,
+  "links": {
+   "Ben": {
+    "snr_in_median": 27.1,
+    "snr_out_median": 29.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 8.0,
+    "reason": ""
+   },
+   "Cat": {
+    "snr_in_median": 24.0,
+    "snr_out_median": 25.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 35.0,
+    "reason": ""
+   },
+   "Ann": {
+    "snr_in_median": 20.2,
+    "snr_out_median": 25.0,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 13.0,
+    "reason": ""
+   }
+  },
+  "group_sent": 290,
+  "group_delivered_all": 290,
+  "group_states": [
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered"
+  ]
+ },
+ "messages_sent": 1163
+}

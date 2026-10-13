@@ -1,0 +1,89 @@
+code under test: /home/claude/r61
+
+F1 mirror-image self-interference
+[link] link up [r6.1-mesh]: my_addr=1  peer_addr=2  frag=256B  ack_timeout=0.50s retries=5  ARQ=selective-repeat window 32 per peer
+[link] commands:
+[link]   <text>              send a text message to the peer
+[link]   /sendfile <path>    segment and send a file
+[link]   /stats              print link counters
+[link]   /ping               send a one-word probe
+[link]   /secure             encryption status, key fingerprints
+[link]   /help               this list
+[link] static: channel 0
+[link] security: OFF - frames are sent in the clear
+  [PASS] F1a the node block's channel plan puts no channel on another channel's IQ image - offsets [450, 1050, 1650, 2250] kHz, image hits []
+  [PASS] F1b two nodes on channels 0 and 3 (mirror channels in r6.0.1) secure the link and exchange messages - session 1.1 s, messages delivered/delivered, SINR A->B 29.8 B->A 29.8 dB
+
+F2 own transmitter overloads own receiver
+  [PASS] F2 own transmitter at full scale: gain control clears the ADC and both directions reach 15 dB - A clipped 0.0, SINR A->B 25.0 B->A 20.1 dB, messages delivered/delivered, A RX gain 8.0 TX atten 55.0
+
+F3 receiver freeze on a corrupted header
+  [PASS] F3 a header announcing 12301 bytes costs only its own frame (r6.0.1 waited for 98408 bits on that channel) - 5 of 5 following frames
+
+F4 overflows: channels consumed in lockstep
+[link] link up [r6.1-mesh]: my_addr=1  peer_addr=2  frag=256B  ack_timeout=0.50s retries=5  ARQ=selective-repeat window 32 per peer
+[link] commands:
+[link]   <text>              send a text message to the peer
+[link]   /sendfile <path>    segment and send a file
+[link]   /stats              print link counters
+[link]   /ping               send a one-word probe
+[link]   /secure             encryption status, key fingerprints
+[link]   /help               this list
+[link] static: channel 0
+[link] security: OFF - frames are sent in the clear
+  [PASS] F4a the node block has no stream inputs (r6.0.1 read four independently clocked symbol streams + the ADC in one block) - in_sig None
+  [PASS] F4b no block in the flowgraph takes stream inputs from two receive channels (each symbol clock follows its own crystal) - []
+
+F5 lag, slow host, persistent one-way link
+[link] link up [r6.1-mesh]: my_addr=1  peer_addr=2  frag=256B  ack_timeout=0.50s retries=5  ARQ=selective-repeat window 32 per peer
+[link] commands:
+[link]   <text>              send a text message to the peer
+[link]   /sendfile <path>    segment and send a file
+[link]   /stats              print link counters
+[link]   /ping               send a one-word probe
+[link]   /secure             encryption status, key fingerprints
+[link]   /help               this list
+[link] static: channel 0
+[link] security: OFF - frames are sent in the clear
+  [PASS] F5a an idle node transmits at most a few frames a second (r6.0.1: an IDLE frame back to back, ~200/s, each decoded in Python by every receiver) - 2.0 frames/s
+  [PASS] F5b a slow host (2.5 s receive latency, node B: echo 4.6 s) still secures every link and delivers both ways - session 24.3, delivered/delivered; session 0.0, delivered/delivered; session 0.0, delivered/delivered
+  [PASS] F5c a node nobody can hear reports a link fault and stays on its channel (r6.0.1 treated it as a collision and hopped) - 0 channel moves in 110 s, fault reported True, peer states ['cant-hear-you', 'cant-hear-you']
+  [PASS] F5d crossed handshakes on a slow link (1.7 s each way) converge on one session: traffic flows after the old sessions expire - frames opened in the last 30 s: A 30, B 30; unknown-session drops 21
+  [PASS] F5e two nodes that claimed one channel separate on a slow host (2.5 s transmit pipeline; r6.0.1 kept them together) - both on channel 1 at start: True; settled after 11 s: True
+  [PASS] F5f on a slow host (3 s echo) every link stays "ok" through the periodic channel checks: no "can't hear you", no link fault - settled True; over 240 s: 27 channel checks, 0 of 2880 link readings "can't hear you", 0 link-fault reports
+  [PASS] F5g two nodes that start on one channel at the same instant, with identical random choices, part within 40 s (r6.1 before the fix: both reported a link fault and stayed) - shared, parted after 2 s; shared, parted after 12 s; shared, parted after 7 s
+  [PASS] F5h the only two nodes, on one channel and unable to decode each other, part within 40 s (r6.1 before the fix and r6.0.1: stayed together) - shared, parted after 24 s; shared, parted after 18 s; shared, parted after 13 s
+
+F6 CPU
+  [PASS] F6 the flowgraph has no FLL band-edge blocks (0.54 core) and its Qt sinks see decimated data (0.1-0.15 core each in r6.0.1) - 0 FLLs, undecimated Qt sinks [], Python blocks ['deframer_ch0', 'deframer_ch1', 'deframer_ch2', 'deframer_ch3', 'link_layer', 'tx_framer']
+
+F7 transmit queue in front of the modulator
+  [PASS] F7 a transmitter 15 % slower than its airtime model keeps a bounded queue (r6.0.1: the PDU queue grew past 100 frames - "pdu_to_tagged_stream ... Message discarded") - longest real queue 0.05 s, file delivered
+
+W wire format
+  [PASS] W1 the wire revision moved on (r6.1) - r6.1-mesh
+  [PASS] W2 an r6.1 beacon is the r6.0 beacon with the report appended (r6.0 parsers read the same fields)
+  [PASS] W3 the report round-trips (two-way SNR table, gain state) - {'auto': True, 'overloaded': False, 'impaired': False, 'adc_peak': -12, 'rx_gain': 20, 'tx_atten': 48, 'levels': [-60, None, -45, -80], 'links': {9: {'snr': 21.
+  [PASS] W4 a beacon without the report (an r6.0 node) parses, report absent
+  [PASS] W5 an extension of an unknown version is ignored, not fatal
+
+T telemetry
+  [PASS] T1 telemetry opens no file in the constructor, then writes one row a second - 4 rows in ['node_T_19700101_060320.csv', 'node_T_19700101_060320_peers.csv']
+  [PASS] T2 the row has the overflow, gain, ADC, CPU, echo and per-channel columns
+
+R embedded-block rules
+[link] link up [r6.1-mesh]: my_addr=244  peers: discovered  frag=256B  ack_timeout=0.50s retries=5  ARQ=selective-repeat window 32 per peer
+[link] commands:
+[link]   <text>              send a text message to the peer
+[link]   /sendfile <path>    segment and send a file
+[link]   /stats              print link counters
+[link]   /ping               send a one-word probe
+[link]   /secure             encryption status, key fingerprints
+[link]   /help               this list
+[link] mesh: address 244 (derived from node_id.json), 4 channels at 600 kHz spacing, channel automatic
+[link] security: ERROR - no node key in /tmp/bpsk_r61_elbwwqw1/r_nokeys/keys - run: python3 bpsk_keys.py init
+[link] nothing will be transmitted until this is fixed (or set security=False)
+  [PASS] R1 GRC can instantiate the block: no thread, no socket, no key created in __init__ - threads 1->1, port free True, key created False
+  [PASS] R2 every message handler is a named method (the stub refuses lambdas and partials, as GNU Radio's gateway does)
+
+all r6.1 regression checks passed

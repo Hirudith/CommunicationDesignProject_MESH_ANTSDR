@@ -1,0 +1,237 @@
+{
+ "nodes": [
+  "Ann",
+  "Ben",
+  "Cat",
+  "Dan"
+ ],
+ "scale": 32.0,
+ "seconds": 300.0,
+ "Ann": {
+  "rows": 300,
+  "overflows_after_warmup": 0,
+  "underflows_after_warmup": 0,
+  "channel": "1",
+  "rx_gain": "12",
+  "tx_atten": "44",
+  "adc_peak_dbfs": "-11.0",
+  "adc_clip": "0.0",
+  "cpu_cores": "0.25",
+  "cpu_top": "BPSK Chat Node:0.06 multiply_const:0.01 symbol_sync_cc:0.01 keep_one_in_n:0.01 python3.:0.01 short_to_float:0.01 keep_m_in_n:0.01 freq_xlating_:0.01",
+  "echo_ms": "1968.6",
+  "live_fault": "",
+  "rx_valid": "2710",
+  "rx_bad": "5",
+  "adc_peak_max_after_warmup": -8.6,
+  "channel_changes_after_warmup": 0,
+  "cpu_mean": 0.28,
+  "headers_rejected": 1,
+  "faults": [],
+  "links": {
+   "Ben": {
+    "snr_in_median": 28.0,
+    "snr_out_median": 30.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 4.0,
+    "reason": ""
+   },
+   "Cat": {
+    "snr_in_median": 29.8,
+    "snr_out_median": 27.0,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 6.0,
+    "reason": ""
+   },
+   "Dan": {
+    "snr_in_median": 24.4,
+    "snr_out_median": 28.0,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 14.0,
+    "reason": ""
+   }
+  },
+  "group_sent": 6,
+  "group_delivered_all": 6,
+  "group_states": [
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered"
+  ]
+ },
+ "Ben": {
+  "rows": 300,
+  "overflows_after_warmup": 0,
+  "underflows_after_warmup": 0,
+  "channel": "0",
+  "rx_gain": "15",
+  "tx_atten": "46",
+  "adc_peak_dbfs": "-10.0",
+  "adc_clip": "0.0",
+  "cpu_cores": "0.25",
+  "cpu_top": "BPSK Chat Node:0.06 symbol_sync_cc:0.02 agc3_cc:0.02 python3.:0.01 add_cc:0.01 costas_loop_cc:0.01 multiply_const:0.01 keep_m_in_n:0.01",
+  "echo_ms": "1660.5",
+  "live_fault": "",
+  "rx_valid": "2711",
+  "rx_bad": "6",
+  "adc_peak_max_after_warmup": -8.7,
+  "channel_changes_after_warmup": 0,
+  "cpu_mean": 0.29,
+  "headers_rejected": 0,
+  "faults": [],
+  "links": {
+   "Ann": {
+    "snr_in_median": 30.6,
+    "snr_out_median": 28.0,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 20.0,
+    "reason": ""
+   },
+   "Dan": {
+    "snr_in_median": 28.7,
+    "snr_out_median": 28.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 25.0,
+    "reason": ""
+   },
+   "Cat": {
+    "snr_in_median": 31.2,
+    "snr_out_median": 26.0,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 29.0,
+    "reason": ""
+   }
+  },
+  "group_sent": 6,
+  "group_delivered_all": 6,
+  "group_states": [
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered"
+  ]
+ },
+ "Cat": {
+  "rows": 300,
+  "overflows_after_warmup": 0,
+  "underflows_after_warmup": 0,
+  "channel": "3",
+  "rx_gain": "10",
+  "tx_atten": "42",
+  "adc_peak_dbfs": "-10.8",
+  "adc_clip": "0.0",
+  "cpu_cores": "0.25",
+  "cpu_top": "BPSK Chat Node:0.06 python3.:0.01 multiply_const:0.01 symbol_sync_cc:0.01 ZMQbg/IO/:0.01 freq_xlating_:0.01 agc3_cc:0.01 stream_to_vec:0.01",
+  "echo_ms": "1944.2",
+  "live_fault": "",
+  "rx_valid": "2711",
+  "rx_bad": "5",
+  "adc_peak_max_after_warmup": -7.9,
+  "channel_changes_after_warmup": 0,
+  "cpu_mean": 0.28,
+  "headers_rejected": 1,
+  "faults": [],
+  "links": {
+   "Ben": {
+    "snr_in_median": 26.0,
+    "snr_out_median": 31.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 32.0,
+    "reason": ""
+   },
+   "Ann": {
+    "snr_in_median": 27.1,
+    "snr_out_median": 30.0,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 31.0,
+    "reason": ""
+   },
+   "Dan": {
+    "snr_in_median": 23.7,
+    "snr_out_median": 30.0,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 22.0,
+    "reason": ""
+   }
+  },
+  "group_sent": 5,
+  "group_delivered_all": 5,
+  "group_states": [
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered"
+  ]
+ },
+ "Dan": {
+  "rows": 300,
+  "overflows_after_warmup": 0,
+  "underflows_after_warmup": 0,
+  "channel": "2",
+  "rx_gain": "15",
+  "tx_atten": "46",
+  "adc_peak_dbfs": "-9.8",
+  "adc_clip": "0.0",
+  "cpu_cores": "0.25",
+  "cpu_top": "BPSK Chat Node:0.06 rotator_cc:0.02 keep_one_in_n:0.02 python3.:0.02 keep_m_in_n:0.01 short_to_float:0.01 symbol_sync_cc:0.01 interp_fir_filt:0.01",
+  "echo_ms": "1921.0",
+  "live_fault": "",
+  "rx_valid": "2711",
+  "rx_bad": "3",
+  "adc_peak_max_after_warmup": -7.7,
+  "channel_changes_after_warmup": 0,
+  "cpu_mean": 0.28,
+  "headers_rejected": 0,
+  "faults": [],
+  "links": {
+   "Ben": {
+    "snr_in_median": 28.8,
+    "snr_out_median": 28.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 6.0,
+    "reason": ""
+   },
+   "Cat": {
+    "snr_in_median": 29.9,
+    "snr_out_median": 23.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 21.0,
+    "reason": ""
+   },
+   "Ann": {
+    "snr_in_median": 28.0,
+    "snr_out_median": 24.5,
+    "fer": 0.0,
+    "state": "ok",
+    "session_s": 18.0,
+    "reason": ""
+   }
+  },
+  "group_sent": 5,
+  "group_delivered_all": 5,
+  "group_states": [
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered",
+   "delivered"
+  ]
+ },
+ "messages_sent": 22
+}

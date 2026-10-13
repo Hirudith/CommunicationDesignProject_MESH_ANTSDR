@@ -1,0 +1,69 @@
+
+Deframer (replaces correlate_access_code_bb_ts -> repack_bits_bb -> tagged_stream_to_pdu)
+  [PASS] 40 frames of 13..600 bytes in one stream all decode - 40 of 40
+  [PASS] the same stream fed in random pieces of 1..5000 bits decodes identically - 40 of 40
+  [PASS] a header announcing 12301 bytes (both copies agree) is rejected at once - {'bits': 9864, 'hits': 7, 'frames': 6, 'hdr_mismatch': 0, 'hdr_bad_len': 1, 'max_pending': 0}
+  [PASS] ... and costs nothing but that frame: all 6 frames around it decode - 6 of 6
+  [PASS] ... and the deframer never holds more than one maximum frame of bits - 63 bits held
+  [PASS] a plausible wrong length (500 B) loses only its own frame: the access codes inside it are still searched - 7 frames
+  [PASS] length copies that disagree are rejected - {'bits': 2664, 'hits': 2, 'frames': 1, 'hdr_mismatch': 1, 'hdr_bad_len': 0, 'max_pending': 0}
+  [PASS] access code with 2 bit errors found (threshold 2, as r6)
+  [PASS] access code with 3 bit errors not found
+  [PASS] 2 Mbit of random bits: no frame, bounded memory - 63 held
+  [PASS] throughput far above four channels at 250 kbit/s (r6.1 decodes in numpy, 4096 bits per call) - 35.2 Mbit/s per core
+
+Transmit framer and PRBS-15 filler
+  [PASS] no 64-bit window of the PRBS-15 filler (or its joins with a preamble/postamble) is within 2 bits of the access code - minimum distance 18 (joins [24, 24])
+  [PASS] PRBS-15 has its full period and balance
+  [PASS] symbols are +-1 (BPSK)
+  [PASS] frames -> differential BPSK -> reference receiver -> deframer: all 5 back - 5 of 5
+  [PASS] the rest is filler: no phantom frames
+  [PASS] the transmit backlog is bounded (0.5 s): pushes beyond it are refused, counted, never queued - 21 accepted, backlog 0.497 s
+  [PASS] frames longer than 600 bytes are refused
+  [PASS] output is continuous across calls (phase and filler position)
+
+One-sided channel plan
+  [PASS] channels at +450/+1050/+1650/+2250 kHz
+  [PASS] no channel's IQ image lands on any channel (r6.0.1: 0<->3, 1<->2) - [[], [], [], []]
+  [PASS] (the r6.0.1 two-sided plan: every image on another channel) - [[3], [2], [1], [0]]
+  [PASS] DC/LO leakage outside every channel, band edge inside Nyquist - dc guard 281 kHz, edge 81% of fs/2
+  [PASS] decimation 6 to 1 MS/s, 4 samples/symbol, TX interpolation 24
+
+Carrier offset estimate and AFC (replace four FLL band-edge blocks)
+  [PASS] offsets 0..+-55 kHz (two +-25 ppm crystals at 910 MHz: up to 45 kHz) estimated within 50 Hz - [0.25476596262403683, 0.0389019079893842, 0.5265555408823275, 0.5160888693717425, 0.647016177601472, 0.6756149642387754, 0.24542482507968089]
+  [PASS] noise alone gives no estimate - ratio 10.6 dB
+  [PASS] AFC moves only on two agreeing estimates, then holds off - updates at [1]
+  [PASS] AFC correction converges on the offset - correction 20001 Hz
+  [PASS] an estimate outside the +-6 % limit is refused, not clipped
+  [PASS] a channel silent for 10 s drops its correction (the next transmitter has its own crystal) - correction 0
+
+Measurements
+  [PASS] EVM SNR tracks 6 dB - 6.12 dB
+  [PASS] EVM SNR tracks 15 dB - 14.96 dB
+  [PASS] EVM SNR tracks 25 dB - 24.99 dB
+  [PASS] silence gives no SNR
+  [PASS] in-band level ignores a signal one channel away (> 40 dB down) - -32.5 vs -90.2 dBFS
+  [PASS] ADC stats: a clean snapshot has no clipping, an overdriven one reports its clipped fraction and 0 dBFS - 0.0 / 0.860107421875
+
+gr-iio O/U marks on stderr
+  [PASS] O/U marks are counted, one per event; letters inside words are not
+  [PASS] state carries across chunk boundaries ("...W" + "O" is a word)
+  [PASS] one mark a second, each read on its own ("O" "O" "O" ... as gr-iio prints them): every one counted - 6 of 6
+
+Gain staging law (bpsk_gain)
+  [PASS] clipping (node A: 61.8 % at 0 dBFS) drops RX gain 12 dB at once - [('rx', 18, 'ADC peak 0.0 dBFS, 40.00 % clipped')]
+  [PASS] readings within 0.25 s of a change are ignored, at most one change per 0.5 s
+  [PASS] the loop settles inside the hysteresis band (-20..-9 dBFS) and stops changing - RX gain 15, peak -9.0 dBFS, 3 changes
+  [PASS] no RX gain increase on readings taken with the transmitter off - rx 20
+  [PASS] ... nor on headroom lasting less than 2 s (a channel check's gap reaching the ADC late) - rx 20
+  [PASS] ... but up 2 dB per 2 s of steady headroom with it on - rx 26 after 9.5 s
+  [PASS] clipping at minimum RX gain raises TX attenuation 3 dB - [('tx', 53, 'own transmitter overloads the ADC even at minimum RX gain (0.0 dBFS)')]
+  [PASS] bounds hold (RX 0..70, TX 10..89)
+  [PASS] TX loop: weakest neighbour at 9 dB -> 2 dB more power - [('tx', 48, 'weakest neighbour hears this node at 9.0 dB')]
+  [PASS] ... an impaired (overloaded) neighbour is left out: everyone else above 23 dB -> 1 dB less power - [('tx', 49, 'every neighbour hears this node above 30.0 dB')]
+  [PASS] a neighbour that does not list this node counts as 0 dB - [('tx', 47, 'weakest neighbour hears this node at 0.0 dB')]
+  [PASS] between 13 and 23 dB nothing changes (hysteresis)
+  [PASS] manual override: auto off freezes both
+  [PASS] set_manual moves either one, within bounds
+
+all phy checks passed

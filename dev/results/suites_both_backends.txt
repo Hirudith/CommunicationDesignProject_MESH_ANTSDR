@@ -1,0 +1,23 @@
+default test_crypto rc=0 pass=38 fail=0 3s
+default test_secure rc=0 pass=31 fail=0 4s
+default test_arq rc=0 pass=22 fail=0 4s
+default test_bpsk_link rc=0 pass=31 fail=0 0s
+default test_regressions rc=0 pass=29 fail=0 1s
+default test_shim rc=0 pass=35 fail=0 2s
+default test_shutdown rc=0 pass=10 fail=0 2s
+default test_mesh rc=0 pass=62 fail=0 13s
+default test_phy rc=0 pass=53 fail=0 0s
+default test_r61 rc=0 pass=25 fail=0 19s
+default test_grc rc=0 pass=24 fail=0 45s
+pure test_crypto rc=0 pass=38 fail=0 3s
+pure test_secure rc=0 pass=31 fail=0 6s
+pure test_arq rc=0 pass=22 fail=0 5s
+pure test_bpsk_link rc=0 pass=31 fail=0 1s
+pure test_regressions rc=0 pass=29 fail=0 1s
+pure test_shim rc=0 pass=35 fail=0 2s
+pure test_shutdown rc=0 pass=10 fail=0 2s
+pure test_mesh rc=0 pass=62 fail=0 17s
+pure test_phy rc=0 pass=53 fail=0 1s
+pure test_r61 rc=0 pass=25 fail=0 23s
+pure test_grc rc=0 pass=24 fail=0 45s
+DONE
